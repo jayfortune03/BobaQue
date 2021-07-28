@@ -5,4 +5,5 @@ Package yang perlu di install :
 - EXPRESS
 - PG
 - SEQUELIZE 
+- EXPRESS-SESSION
 
