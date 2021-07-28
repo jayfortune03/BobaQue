@@ -1,0 +1,43 @@
+<%- include('./partials/header.ejs', {title: "Home"}) %>
+
+<table border="1">
+    <h3>Menu</h3>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    <% menu.forEach(el =>{ %>
+        <tr>
+            <td><%= el.name %></td>
+            <td><%= el.price %></td>
+            <td><%= el.description %></td>
+            <td>
+                <a href="http://localhost:3000/menu/buy/<%= el.id%>">Buy</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+
+<table border="1">
+    <h3>Toppings</h3>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Action</th>
+    </tr>
+    <% data.forEach(el =>{ %>
+        <tr>
+            <td><%= el.name %></td>
+            <td><%= el.price %></td>
+            <td><%= el.description %></td>
+            <td>
+                <a href="http://localhost:3000/topping/buy/<%= el.id%>">Add Topping</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('./partials/footer.ejs') %>

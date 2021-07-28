@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%- title %></title>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <style>
+        body,html{
+    margin: 0;
+    padding: 0;
+    }
+
+    header{
+        width: 100%;
+        height: 70px;
+        background-color: #282828;
+    }
+
+    h1{
+        position: absolute;
+        padding: 3px;
+        float: left;
+        margin-left: 2%;
+        margin-top: 10px;
+        font-family: 'Alfa Slab One', cursive;
+        color: coral; 
+    }
+
+    span{
+        color: #ffff;
+    }
+
+    ul{
+        width: auto;
+        float: right;
+        margin-top: 8px;
+    }
+
+    li{
+        display: inline-block;
+        padding: 15px 30px;
+    }
+
+    header a{
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 1.2vw;
+    }
+
+    a:hover{
+        color: #f0c330;
+        transition: 0.5s;
+    }
+    </style>
+</head>
+<header>
+    <h1>BOBA<span>QUE</span></h1>
+    <nav>
+        <ul>
+            <li><a href="http://localhost:3000">Home</a></li>
+            <li><a href="http://localhost:3000/orders">Orders</a></li>
+            <li><a href="http://localhost:3000/register">Register</a></li>
+            <li><a href="http://localhost:3000/login">Sign In</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
