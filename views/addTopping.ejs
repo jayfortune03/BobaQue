@@ -1,0 +1,25 @@
+<%- include('./partials/headerLoggedIn.ejs', {title: "Add Topping"}) %>
+<h1>"<%= menu[0].name %>"</h1>
+
+<form action="http://localhost:3000/menu/addTopping/<%= menu[0].id%>" method="POST">
+    <label for="add">Add Topping</label><br>
+    <select name="ToppingId" id="">
+        <% topping.forEach(el => { %>
+            <option value=<%= el.id %>><%= el.name %></option>
+        <% }) %>
+    </select><br><br>
+    <input type="submit" value="Submit">
+</form>
+<br>
+<br>
+<table border="1">
+    <tr>
+        <th>Topping</th>
+    </tr>
+    <% menu[0].Toppings.forEach(el => { %>
+        <tr>
+            <td><%= el.name %></td>
+        </tr>
+    <% }) %>
+</table>
+<%- include('./partials/footer.ejs') %>
