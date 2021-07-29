@@ -1,7 +1,7 @@
 <%- include('./partials/headerLoggedIn.ejs', {title: "Home"}) %>
 
 <table border="1">
-    <h3>Menu</h3>
+    <h1>Beverages Menu</h1>
     <tr>
         <th>Name</th>
         <th>Price</th>
@@ -15,26 +15,6 @@
             <td><%= el.description %></td>
             <td>
                 <a href="http://localhost:3000/menu/addTopping/<%= el.id %>">Add Topping</a>
-                |
-                <a href="http://localhost:3000/menu/buy/<%= el.id%>">Buy</a>
-            </td>
-        </tr>
-    <% }) %>
-</table>
-
-<table border="1">
-    <h3>Toppings</h3>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Action</th>
-    </tr>
-    <% data.forEach(el =>{ %>
-        <tr>
-            <td><%= el.name %></td>
-            <td><%= getRp(el.price) %></td>
-            <td>
-                <a href="http://localhost:3000/topping/<%= el.id%>">Add Drink</a>
             </td>
         </tr>
     <% }) %>
