@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsToMany(models.Menu, { through: `MenuToppings`, foreignKey: `UserId`})
-      User.belongsToMany(models.Topping, { through: `MenuToppings`, foreignKey: `UserId`})
+      User.belongsToMany(models.Menu, { through: `MenuToppings` })
+      User.belongsToMany(models.Topping, { through: `MenuToppings` })
     }
   };
   User.init({

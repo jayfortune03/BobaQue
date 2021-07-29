@@ -8,12 +8,14 @@
     <tr>
         <th>Topping</th>
         <th>Price</th>
+        <th>Image</th>
         <th>Action</th>
     </tr>
     <% menu[0].Toppings.forEach(el => { %>
         <tr>
             <td><%= el.name %></td>
             <td><%= getRp(el.price) %></td>
+            <td><img src="<%= el.image %>" width="150" height="75"></td>
             <td>
                 <a href="/menu/removeTopping/<%= menu[0].id%>/<%= el.id %>">Remove</a>
             </td>
