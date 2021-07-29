@@ -6,11 +6,13 @@ class LoginController {
         if (req.session.isLogin) {
             res.redirect(`/`)
         } else {
-            res.render(`login`)
+            let error = req.query.errors
+            res.render(`login`, {error})
         }
     }
 
     static postLogin(req, res) {
+        let error = `login_failed`
         User.findOne({
             where: {username : req.body.username}
         })
@@ -21,15 +23,20 @@ class LoginController {
                     req.session.isLogin = true
                     res.redirect(`/`)
                 } else {
-                    res.send(`Password/Username salah mas`)
+                    res.redirect(`/login?errors=${error}`)
                 }
             } else {
-                res.send(`Password/Username salah mas`)
+                res.redirect(`/login?errors=${error}`)
             }
         })
         .catch(err => {
-            res.send(err)
+            res.redirect(`/login?errors=${error}`)
         })
+    }
+
+    static logout(req, res) {
+        req.session.isLogin = false
+        res.redirect(`/login`)
     }
 }
 
