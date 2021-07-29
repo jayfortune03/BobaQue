@@ -1,8 +1,10 @@
-<%- include('./partials/headerLoggedIn.ejs', {title: "Add Topping"}) %>
-<h1><%= menu[0].name %></h1>
-<h3><%= getRp(menu[0].price) %></h3>
+<%- include('./partials/headerAddtopping.ejs', {title: "Add Topping"}) %>
+<center>
+    <h1>" <%= menu[0].name %> "</h1>
+    <h4>Original Price : <b>"<%= getRp(menu[0].price) %>"</b></h4>
+</center>
 
-<table border="1">
+<table id="table">
     <tr>
         <th>Topping</th>
         <th>Price</th>
@@ -13,23 +15,25 @@
             <td><%= el.name %></td>
             <td><%= getRp(el.price) %></td>
             <td>
-                <a href="http://localhost:3000/menu/removeTopping/<%= menu[0].id%>/<%= el.id %>">Remove</a>
+                <a href="/menu/removeTopping/<%= menu[0].id%>/<%= el.id %>">Remove</a>
             </td>
         </tr>
     <% }) %>
 </table>
 <br>
-<form action="http://localhost:3000/menu/addTopping/<%= menu[0].id%>" method="POST">
-    <label for="add">Add Topping</label><br>
-    <select name="ToppingId" id="">
-        <option value="">Choose Topping</option>
-        <% topping.forEach(el => { %>
-            <option value=<%= el.id %>><%= el.name %> (<%= getRp(el.price) %>) </option>
-        <% }) %>
-    </select><br><br>
-    <input type="submit" value="Add">
-</form>
-    <br>
+<div>
+    <form action="/menu/addTopping/<%= menu[0].id%>" method="POST">
+        <label for="add">Add Topping</label><br>
+        <select name="ToppingId" id="">
+            <option value="">Choose Topping</option>
+            <% topping.forEach(el => { %>
+                <option value=<%= el.id %>><%= el.name %> (<%= getRp(el.price) %>) </option>
+            <% }) %>
+        </select><br><br>
+        <input type="submit" value="Add">
+    </form>
+    <h3>Total Price : <%= getTotalPrice(menu,menu[0].Toppings) %></h3>
+</div>
+<br>
     
-<h1>Total Price : <%= getTotalPrice(menu,menu[0].Toppings) %></h1>
 <%- include('./partials/footer.ejs') %>

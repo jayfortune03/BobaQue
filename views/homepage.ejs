@@ -1,23 +1,36 @@
 <%- include('./partials/headerLoggedIn.ejs', {title: "Home"}) %>
-
-<table border="1">
-    <h1>Beverages Menu</h1>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Action</th>
-    </tr>
-    <% menu.forEach(el =>{ %>
-        <tr>
-            <td><%= el.name %></td>
-            <td><%= getRp(el.price) %></td>
-            <td><%= el.description %></td>
-            <td>
-                <a href="http://localhost:3000/menu/addTopping/<%= el.id %>">Add Topping</a>
-            </td>
-        </tr>
+<br>
+<% menu.forEach((el, i) => { %>
+    <% if (i % 3 === 0) { %>
+        <div class="row">
+            <div class="column">
+              <div class="card">
+                <img src="<%= el.image%>" width="500" height="350" alt="Avatar" style="width:100%">
+                <h3><%= el.name %></h3>
+                <p><i>"<%= el.description %>"</i></p>
+                <p><%= getRp(el.price) %></p>
+                <form action="/menu/addTopping/<%= el.id%>" method="GET">
+                <input class="button" type="submit" value="Buy">
+                </form>
+                <br>
+            </div>
+            <br>
+            <br>
+            </div>
+    <%} else { %>
+        <div class="row">
+            <div class="column">
+              <div class="card">
+                <img src="<%= el.image%>" width="500" height="350" alt="Avatar" style="width:100%">
+                <h3><%= el.name %></h3>
+                <p><i>"<%= el.description %>"</i></p>
+                <p><%= getRp(el.price) %></p>
+                <form action="/menu/addTopping/<%= el.id %>" method="GET">
+                <input class="button" type="submit" value="Buy">
+                </form>
+                <br>
+              </div>
+            </div>
+    <% } %>
     <% }) %>
-</table>
-
 <%- include('./partials/footer.ejs') %>

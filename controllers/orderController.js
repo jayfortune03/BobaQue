@@ -5,7 +5,6 @@ class OrderController {
         MenuTopping.findAll()
             .then((data)=> res.render(`order`, {data}))
             .catch(err=> res.send(err))
-        
     }
 }
 
