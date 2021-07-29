@@ -4,10 +4,14 @@ const getRp = require('../helpers/getRp')
 class HomeController {
     static viewPage(req, res) {
         let menu
-        Menu.findAll()
+        Menu.findAll({
+            order: [[`id`, `ASC`]]
+        })
             .then(data => {
                 menu = data
-                return Topping.findAll()
+                return Topping.findAll({
+                    order: [[`id`, `ASC`]]
+                })
             })
             .then(data => {
                 res.render(`homepage`, {data,menu,getRp})

@@ -1,0 +1,47 @@
+<%- include('./partials/headerAdmin.ejs', {title: "Home"}) %>
+
+<table border="1">
+    <h3>Menu</h3>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Action</th>
+    </tr>
+    <% menu.forEach(el =>{ %>
+        <tr>
+            <td><%= el.name %></td>
+            <td><%= el.price %></td>
+            <td><%= el.description %></td>
+            <td><img src="<%= el.image %>" width="150" height="75"></td>
+            <td>
+                <a href="/menu/edit/<%=el.id%>">Edit</a> | <a href="/menu/delete/<%=el.id%>">Delete</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+
+<table border="1">
+    <h3>Toppings</h3>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Image</th>
+        <th>Action</th>
+    </tr>
+    <% data.forEach(el =>{ %>
+        <tr>
+            <td><%= el.name %></td>
+            <td><%= el.price %></td>
+            <td><%= el.description %></td>
+            <td><img src="<%= el.image %>" width="150" height="75"></td>
+            <td>
+                <a href="/topping/edit/<%=el.id%>">Edit</a> | <a href="/topping/delete/<%=el.id%>">Delete</a>
+            </td>
+        </tr>
+    <% }) %>
+</table>
+
+<%- include('./partials/footer.ejs') %>

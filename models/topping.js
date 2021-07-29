@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   Topping.init({
     name: DataTypes.STRING,
     price: DataTypes.INTEGER,
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
+    image: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Topping',
