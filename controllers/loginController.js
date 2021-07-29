@@ -18,12 +18,23 @@ class LoginController {
         })
         .then(data => {
             if (data) {
-                const isPasswordMatch = checkPassword(req.body.password, data.password)
-                if (isPasswordMatch) {
-                    req.session.isLogin = true
-                    res.redirect(`/`)
-                } else {
-                    res.redirect(`/login?errors=${error}`)
+                if (data.role === `Customer`) {
+                    const isPasswordMatch = checkPassword(req.body.password, data.password)
+                    if (isPasswordMatch) {
+                        req.session.isLogin = true
+                        res.redirect(`/`)
+                    } else {
+                        res.redirect(`/login?errors=${error}`)
+                    }
+                } else if (data.role === `Admin`) {
+                    const isPasswordMatch = checkPassword(req.body.password, data.password)
+                    if (isPasswordMatch) {
+                        req.session.isAdmin = true
+                        req.session.isLogin = true
+                        res.redirect(`/admin`)
+                    } else {
+                        res.redirect(`/login?errors=${error}`)
+                    }
                 }
             } else {
                 res.redirect(`/login?errors=${error}`)
@@ -36,6 +47,7 @@ class LoginController {
 
     static logout(req, res) {
         req.session.isLogin = false
+        req.session.isAdmin = false
         res.redirect(`/login`)
     }
 }
