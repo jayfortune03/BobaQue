@@ -1,4 +1,5 @@
 const { Menu, Topping } = require('../models')
+const getRp = require('../helpers/getRp')
 
 class HomeController {
     static viewPage(req, res) {
@@ -13,7 +14,7 @@ class HomeController {
                 })
             })
             .then(data => {
-                res.render(`homepage`, {data,menu})
+                res.render(`homepage`, {data,menu,getRp})
             })
             .catch(err => res.send(err))
         

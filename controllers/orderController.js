@@ -1,8 +1,10 @@
-const { Menu, Topping, User } = require('../models')
+const { Menu, Topping, User, MenuTopping } = require('../models')
 
 class OrderController {
     static viewOrder(req, res) {
-        res.render(`order`)
+        MenuTopping.findAll()
+            .then((data)=> res.render(`order`, {data}))
+            .catch(err=> res.send(err))
     }
 }
 
