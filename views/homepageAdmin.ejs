@@ -14,7 +14,7 @@
     <% menu.forEach(el =>{ %>
         <tr>
             <td><%= el.name %></td>
-            <td><%= el.price %></td>
+            <td><%= getRp(el.price) %></td>
             <td><%= el.description %></td>
             <td><img src="<%= el.image %>" width="150" height="75"></td>
             <td>
@@ -45,7 +45,7 @@
     <% data.forEach(el =>{ %>
         <tr>
             <td><%= el.name %></td>
-            <td><%= el.price %></td>
+            <td><%= getRp(el.price) %></td>
             <td><%= el.description %></td>
             <td><img src="<%= el.image %>" width="150" height="75"></td>
             <td>

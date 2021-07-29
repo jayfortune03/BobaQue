@@ -1,4 +1,5 @@
 const {User, Topping, Menu} = require(`../models/index`)
+const getRp = require(`../helpers/getRp`)
 
 class AdminController {
     static viewPageAdmin(req, res) {
@@ -13,7 +14,7 @@ class AdminController {
                 })
             })
             .then(data => {
-                res.render(`homepageAdmin`, {data, menu})
+                res.render(`homepageAdmin`, {data, menu, getRp})
             })
             .catch(err => res.send(err))
         
