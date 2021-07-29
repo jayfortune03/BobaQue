@@ -11,7 +11,7 @@
     <% menu.forEach(el =>{ %>
         <tr>
             <td><%= el.name %></td>
-            <td><%= el.price %></td>
+            <td><%= getRp(el.price) %></td>
             <td><%= el.description %></td>
             <td>
                 <a href="http://localhost:3000/menu/buy/<%= el.id%>">Buy</a>
@@ -31,7 +31,7 @@
     <% data.forEach(el =>{ %>
         <tr>
             <td><%= el.name %></td>
-            <td><%= el.price %></td>
+            <td><%= getRp(el.price) %></td>
             <td><%= el.description %></td>
             <td>
                 <a href="http://localhost:3000/topping/buy/<%= el.id%>">Add Topping</a>
