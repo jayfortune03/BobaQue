@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      MenuTopping.belongsTo(models.Topping)
+      MenuTopping.belongsTo(models.User)
+      MenuTopping.belongsTo(models.Menu)
     }
   };
   MenuTopping.init({

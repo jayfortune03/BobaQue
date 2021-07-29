@@ -7,7 +7,7 @@ class MenuController {
         let id = req.params.id
         let result = {getRp, getTotalPrice}
         Menu.findAll({
-            where: { id:id },
+            where: { id: id },
             include: Topping
         })
             .then(data => {
@@ -22,14 +22,13 @@ class MenuController {
     }
 
     static createMenuTopping(req,res) {
-        let id = req.params.id
-        let obj = {
-            ToppingId: req.body.ToppingId || null,
-            MenuId: id
-        }
-        MenuTopping.create(obj)
+        MenuTopping.create({
+            ToppingId:req.body.ToppingId,
+            MenuId: req.params.id,
+            UserId:req.session.user
+        })
             .then(()=> {
-                res.redirect(`/menu/addTopping/${id}`)
+                res.redirect(`/menu/addTopping/${req.params.id}`)
             })
             .catch(err=>res.send(err))
     }
@@ -43,7 +42,6 @@ class MenuController {
             }
         })
             .then(()=> {
-                // res.send('tes')
                 res.redirect(`/menu/addTopping/${MenuId}`)
             })
             .catch(err=>res.send(err))

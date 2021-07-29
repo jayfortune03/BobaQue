@@ -21,6 +21,7 @@ class LoginController {
                 if (data.role === `Customer`) {
                     const isPasswordMatch = checkPassword(req.body.password, data.password)
                     if (isPasswordMatch) {
+                        req.session.user = data.id
                         req.session.isLogin = true
                         res.redirect(`/`)
                     } else {

@@ -3,9 +3,9 @@ const MenuController = require("../controllers/menuController")
 const AdminController = require(`../controllers/adminController.js`)
 const router = express.Router()
 
-router.get('/addTopping/:id', MenuController.showAddTopping)
-router.post('/addTopping/:id', MenuController.createMenuTopping)
-router.get('/removeTopping/:menuId/:toppingId', MenuController.destroyMenuTopping)
+router.get('/addTopping/:id', checkIsLogin, MenuController.showAddTopping)
+router.post('/addTopping/:id', checkIsLogin, MenuController.createMenuTopping)
+router.get('/removeTopping/:menuId/:toppingId', checkIsLogin, MenuController.destroyMenuTopping)
 
 
 router.get(`/edit/:id`, checkIsLogin, checkIsAdmin, AdminController.editMenuForm)

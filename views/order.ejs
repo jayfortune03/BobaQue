@@ -1,6 +1,22 @@
 <%- include('./partials/headerLoggedIn.ejs', {title: "Order"}) %>
 <h1>Order List</h1>
-<table>
-    
+<table id="table">
+    <tr>
+        <th>Menu</th>
+        <th>Topping</th>
+        <th>Total Price</th>
+        <th>Action</th>
+    </tr>
+    <% data.forEach(el => { %>
+        <% let price = getTotalPrice2(el.Menu.price, el.Topping.price) %>
+        <tr>
+            <td><%= el.Menu.name %></td>
+            <td><%= el.Topping.name%></td>
+            <td><%= price %></td>
+            <td>
+                <a href="/orders/checkout/<%= el.id %>/<%= price %>" onclick="return confirm(`Are you sure want to buy?`)">Buy</a>
+            </td>
+        </tr>
+    <% }) %>
 </table>
 <%- include('./partials/footer.ejs') %>
